@@ -1,0 +1,17 @@
+description: >
+  Sample example description.
+# Provide a use-case based example for using this orb.
+# Everything in the `usage` section will be displayed in the orb registry.
+# Comments are not retained.
+usage:
+  version: 2.1
+  orbs:
+    private-conjur: attempt/private-conjur@1.2.3
+  workflows:
+    use-my-orb:
+      jobs:
+        - private-conjur/retrieve_secret:
+            url: "https://conjur_appliance_url"
+            account: "myaccount"
+            service_id: "circleci"
+            secrets: "secret2|sql_username;secret1;"

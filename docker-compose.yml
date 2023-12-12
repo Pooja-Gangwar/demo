@@ -1,0 +1,31 @@
+version: '3'
+services:
+  client:
+    image: cyberark/conjur-cli:5
+    entrypoint: sleep
+    command: infinity
+    environment:
+      CONJUR_APPLIANCE_URL:
+      CONJUR_ACCOUNT:
+      CONJUR_AUTHN_LOGIN:
+      CONJUR_AUTHN_API_KEY:
+      CONJUR_SSL_CERTIFICATE:
+    volumes:
+      - ./src/scripts/bin/oss-ent-policies:/policy
+
+  circleci-orb:
+    build:
+      context: .
+      dockerfile: Dockerfile.orb
+    entrypoint: ["/bin/bash"]
+    command: -c "/scripts/retrieve_secret.sh"
+    environment:
+      PARAM_APPLIANCE_URL:
+      PARAM_ACCOUNT:
+      PARAM_SERVICE_ID:
+      PARAM_SECRETS_ID:
+      PARAM_CERTIFICATE:
+      CIRCLE_OIDC_TOKEN_V2:
+      PARAM_TEST_MODE: "false"
+      PARAM_INTEGR: "true"
+  

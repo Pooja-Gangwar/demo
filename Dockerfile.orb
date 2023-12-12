@@ -1,0 +1,15 @@
+FROM ubuntu:latest
+
+USER root
+
+RUN apt-get -y update; apt-get -y install curl;
+
+RUN curl -L -o /usr/bin/jq https://github.com/jqlang/jq/releases/download/jq-1.6/jq-linux64
+
+RUN chmod 777 /usr/bin/jq
+
+WORKDIR /scripts
+
+COPY src/scripts/retrieve_secret.sh .
+
+RUN chmod +x /scripts/retrieve_secret.sh

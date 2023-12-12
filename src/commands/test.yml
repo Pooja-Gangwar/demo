@@ -1,0 +1,13 @@
+description: >
+  This command fetches secret from Conjur Vault using file inclusion for Conjur Integration testing.
+parameters:
+  target:
+    description: "integration test execution for COnjur"
+    type: string
+    default: "oss"
+steps:
+  - run:
+      environment:
+        PARAM_TARGET: <<parameters.target>>
+      name: Integration Testing
+      command: <<include(scripts/bin/test.sh)>>

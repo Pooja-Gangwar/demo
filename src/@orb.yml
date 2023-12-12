@@ -1,0 +1,9 @@
+version: 2.1
+
+description: |
+  Orb with JWT Authentication mechanism for supporting batch retrieval of secrets from the Cyberark Conjur Secrets Manager in
+  secured way through CircleCI Pipeline.
+
+display:
+  home_url: "https://github.com/Nirupma-Verma/AzurePipeline/blob/main/README.md"
+  source_url: "https://github.com/Nirupma-Verma/AzurePipeline"

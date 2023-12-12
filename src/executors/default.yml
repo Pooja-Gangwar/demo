@@ -1,0 +1,11 @@
+description: |
+  A base Ubuntu Docker image built to run on CircleCI
+parameters:
+  tag:
+    description: >
+      Select your version or any of the available tags here: https://hub.docker.com/r/cimg/base.
+    type: string
+    default: "current"
+
+docker:
+  - image: cimg/base:<<parameters.tag>>
